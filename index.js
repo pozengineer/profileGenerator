@@ -44,7 +44,7 @@ inquirer.prompt([
         axios.get(queryUrl).catch().then(response => {
             console.log(response.data);
             console.log(userColor);
-            return generateHTML({ userColor, ...response.data});
+            return generateHTML({userColor});
         })
         .then(htmlData => {
             console.log(htmlData);
