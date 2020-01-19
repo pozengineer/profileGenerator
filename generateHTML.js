@@ -28,13 +28,14 @@ const colors = {
 const generateHTML = data => {
     const htmlString = `<!DOCTYPE html>
     <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
-        <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
-        <title>Document</title>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+            <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
+            <title>Document</title>
+        </head>
         <style>
             @page {
                 margin: 0;
@@ -52,7 +53,7 @@ const generateHTML = data => {
             height: 100%;
             }
             .wrapper {
-            background-color: ${colors[data.color].wrapperBackground};
+            background-color: ${colors[data].wrapperBackground};
             padding-top: 100px;
             }
             body {
@@ -94,8 +95,8 @@ const generateHTML = data => {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            background-color: ${colors[data.color].headerBackground};
-            color: ${colors[data.color].headerColor};
+            background-color: ${colors[data].headerBackground};
+            color: ${colors[data].headerColor};
             padding: 10px;
             width: 95%;
             border-radius: 6px;
@@ -106,7 +107,7 @@ const generateHTML = data => {
             border-radius: 50%;
             object-fit: cover;
             margin-top: -75px;
-            border: 6px solid ${colors[data.color].photoBorderColor};
+            border: 6px solid ${colors[data].photoBorderColor};
             box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
             }
             .photo-header h1, .photo-header h2 {
@@ -149,8 +150,8 @@ const generateHTML = data => {
             .card {
             padding: 20px;
             border-radius: 6px;
-            background-color: ${colors[data.color].headerBackground};
-            color: ${colors[data.color].headerColor};
+            background-color: ${colors[data].headerBackground};
+            color: ${colors[data].headerColor};
             margin: 20px;
             }
             
@@ -170,10 +171,15 @@ const generateHTML = data => {
                 zoom: .75; 
             } 
             }
-        </style>`
+        </style>
+        <body>
+            <div class="container">
+                <h2>Basic Table</h2>
+                <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+            </div>
+        </body>
+    </html>`
     return htmlString;
 }
 
-module.exports = {
-    generateHTML: generateHTML
-};
+module.exports = generateHTML;
