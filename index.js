@@ -44,23 +44,26 @@ inquirer.prompt([
         axios.get(queryUrl).catch().then(response => {
             console.log(response.data);
             console.log(userColor);
-            return generateHTML(userColor);
+            return generateHTML(userColor, response.data);
         })
-        .then(htmlData => {
-            console.log(htmlData);
-            var conversion = convertFactory({
-                converterPath: convertFactory.converters.PDF
-              });
-               
-              conversion({ html: htmlData }, function(err, result) {
-                if (err) {
-                  return console.error(err);
-                }
-               
-                console.log(result.numberOfPages);
-                console.log(result.logs);
-                result.stream.pipe(fs.createWriteStream(`./${userName}.pdf`));
-                conversion.kill(); // necessary if you use the electron-server strategy, see bellow for details
-              });
-        });
+            .then(htmlData => {
+                console.log(htmlData);
+                var conversion = convertFactory({
+                    converterPath: convertFactory.converters.PDF
+                });
+
+                const htmlTrial = `<h1>${userName}</h1>`;
+                // conversion({ html: htmlTrial }, (err, result) => {
+                conversion({ html: htmlData }, (err, result) => {
+
+                    if (err) {
+                        return console.error(err);
+                    }
+
+                    console.log(result.numberOfPages);
+                    console.log(result.logs);
+                    result.stream.pipe(fs.createWriteStream(`./${userName}.pdf`));
+                    conversion.kill(); // necessary if you use the electron-server strategy, see below for details
+                });
+            });
     });
