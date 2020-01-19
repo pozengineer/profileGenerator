@@ -1,0 +1,26 @@
+{
+  "name": "profilegenerator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pozengineer/profileGenerator.git"
+  },
+  "author": "Dhani Pozniak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pozengineer/profileGenerator/issues"
+  },
+  "homepage": "https://github.com/pozengineer/profileGenerator#readme",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "electron-html-to": "^2.6.0",
+    "electron-prebuilt": "^1.4.13",
+    "fs": "0.0.1-security",
+    "inquirer": "^7.0.3"
+  }
+}
