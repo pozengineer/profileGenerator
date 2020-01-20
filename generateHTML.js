@@ -25,42 +25,24 @@ const colors = {
     }
 };
 
-
-const generateTrial = () => {
-    const htmlString =
-    `<html lang=“en”>
-        <head>
-            <meta charset=“UTF-8" />
-            <title>Document</title>
-        </head>
-        <body>
-            <div class=“container”>
-                <h2>Basic Table</h2>
-                <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
-            </div>
-        </body>
-    </html>`;
-    return htmlString;
-}
-
-function generateHTML(data, response) {
+function generateHTML(data) {
     const htmlString =
     `<!DOCTYPE html>
     <html lang="en-us">
         <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>profileGenerator</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>profileGenerator</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+                integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+            
             <style>
                 @page {
                     margin: 0;
@@ -78,7 +60,7 @@ function generateHTML(data, response) {
                 height: 100%;
                 }
                 .wrapper {
-                background-color: ${colors[data].wrapperBackground};
+                background-color: ${colors[data.userColor].wrapperBackground};
                 padding-top: 100px;
                 }
                 body {
@@ -120,8 +102,8 @@ function generateHTML(data, response) {
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
-                background-color: ${colors[data].headerBackground};
-                color: ${colors[data].headerColor};
+                background-color: ${colors[data.userColor].headerBackground};
+                color: ${colors[data.userColor].headerColor};
                 padding: 10px;
                 width: 95%;
                 border-radius: 6px;
@@ -132,7 +114,7 @@ function generateHTML(data, response) {
                 border-radius: 50%;
                 object-fit: cover;
                 margin-top: -75px;
-                border: 6px solid ${colors[data].photoBorderColor};
+                border: 6px solid ${colors[data.userColor].photoBorderColor};
                 box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
                 }
                 .photo-header h1, .photo-header h2 {
@@ -175,8 +157,8 @@ function generateHTML(data, response) {
                 .card {
                 padding: 20px;
                 border-radius: 6px;
-                background-color: ${colors[data].headerBackground};
-                color: ${colors[data].headerColor};
+                background-color: ${colors[data.userColor].headerBackground};
+                color: ${colors[data.userColor].headerColor};
                 margin: 20px;
                 }
                 
@@ -204,7 +186,7 @@ function generateHTML(data, response) {
                     <!-- row01 -->
                     <div class="row">
                         <div class="col-md-12">
-                            <h1><b>About Me</b></h1>
+                            <h1><b>${data.name}</b></h1>
                             <hr>
                         </div>
                     </div>
@@ -212,7 +194,7 @@ function generateHTML(data, response) {
                     <!-- row02 -->
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-3">
-                            <img src="assets/images/Vegeta01.jpg" alt="Vegeta" class="img-fluid">
+                            <img src="${data.avatar_url}" alt="Vegeta" class="img-fluid">
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-9">
                             <p> A highly motivated and hardworking individual, who is seeking a challenging role as an
