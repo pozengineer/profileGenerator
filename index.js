@@ -10,6 +10,7 @@
 // init();
 
 const fs = require('fs');
+const open = require('open');
 const inquirer = require('inquirer');
 const generateHTML = require('./generateHTML.js');
 const axios = require('axios');
@@ -44,10 +45,10 @@ inquirer.prompt([
     axios.get(queryUrl).catch().then(response => {
         // console.log(response.data);
         console.log(userColor);
-        getStar(userName);
-        console.log(totalStars);
+        const starData = getStar({ userName });
+        console.log(starData);
         
-        return generateHTML({ userColor, ...response.data });
+        return generateHTML({ userColor, ...response.data, starData });
     })
     .then(htmlData => {
         // console.log(htmlData);
@@ -64,16 +65,17 @@ inquirer.prompt([
             }
 
             console.log(result.numberOfPages);
-            console.log(result.logs);
+            // console.log(result.logs);
             console.log('Success');
             result.stream.pipe(fs.createWriteStream(`./${userName}.pdf`));
             conversion.kill(); // necessary if you use the electron-server strategy, see below for details
+        open(`./${userName}.pdf`);
         });
     });
 });
 
-function getStar(username) {
-    const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+function getStar(data) {
+    const queryUrl = `https://api.github.com/users/${data.userName}/repos?per_page=100`;
 
     axios.get(queryUrl).then(function(response) {
         // console.log(response.data);

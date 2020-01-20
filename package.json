@@ -21,6 +21,7 @@
     "electron-html-to": "^2.6.0",
     "electron-prebuilt": "^1.4.13",
     "fs": "0.0.1-security",
-    "inquirer": "^7.0.3"
+    "inquirer": "^7.0.3",
+    "open": "^7.0.0"
   }
 }
