@@ -187,7 +187,7 @@ function generateHTML(data) {
                     <div class="row">
                         <div class="col-md-12">
                             <h1><b>${data.name}</b></h1>
-                            <h1><b>${data.starData}</b></h1>
+                            <h1><b>${data.totalStars}</b></h1>
                             <hr>
                         </div>
                     </div>
