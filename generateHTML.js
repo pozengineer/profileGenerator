@@ -61,12 +61,13 @@ function generateHTML(data) {
                 }
                 .wrapper {
                 background-color: ${colors[data.userColor].wrapperBackground};
-                padding-top: 100px;
+                padding-top: 200px;
                 }
                 body {
                 background-color: white;
                 -webkit-print-color-adjust: exact !important;
                 font-family: 'Cabin', sans-serif;
+                padding-top: 50px;
                 }
                 main {
                 background-color: #E9EDEE;
@@ -76,18 +77,22 @@ function generateHTML(data) {
                 h1, h2, h3, h4, h5, h6 {
                 font-family: 'BioRhyme', serif;
                 margin: 0;
+                text-align: center;
                 }
                 h1 {
                 font-size: 3em;
+                color: #ffffff;
                 }
                 h2 {
                 font-size: 2.5em;
                 }
                 h3 {
-                font-size: 2em;
+                font-size: 1.5em;
+                color: #ffffff;
                 }
                 h4 {
                 font-size: 1.5em;
+                text-align: justify;
                 }
                 h5 {
                 font-size: 1.3em;
@@ -98,6 +103,7 @@ function generateHTML(data) {
                 .photo-header {
                 position: relative;
                 margin: 0 auto;
+                margin-top: 30px;
                 margin-bottom: -50px;
                 display: flex;
                 justify-content: center;
@@ -116,6 +122,7 @@ function generateHTML(data) {
                 margin-top: -75px;
                 border: 6px solid ${colors[data.userColor].photoBorderColor};
                 box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
+                margin-bottom:2px;
                 }
                 .photo-header h1, .photo-header h2 {
                 width: 100%;
@@ -133,6 +140,10 @@ function generateHTML(data) {
                 .nav-link {
                 display: inline-block;
                 margin: 5px 10px;
+                padding-left: 0;
+                color: #ffffff;
+                font-size: 1.5em;
+                text-decoration: none;
                 }
                 .workExp-date {
                 font-style: italic;
@@ -173,6 +184,21 @@ function generateHTML(data) {
                 font-weight: bold;
                 }
 
+                .bioBrief {
+                margin: 0 auto;
+                width: 750px;
+                }
+    
+                .fa {
+                color: #ffffff;
+                font-size: 1.5em;
+                }
+
+                i {
+                color: #ffffff;
+                font-size: 1.5em;
+                }
+
                 @media print { 
                 body { 
                     zoom: .75; 
@@ -182,39 +208,65 @@ function generateHTML(data) {
         </head>
         <body>
             <section id="mainContent">
-                <div class="container">
+                <div class="container wrapper">
                     <!-- row01 -->
                     <div class="row">
-                        <div class="col-md-12">
-                            <h1><b>${data.name}</b></h1>
-                            <h1><b>${data.totalStars}</b></h1>
-                            <hr>
+                        <div class="col-md-12 photo-header">
+                            <img src=${data.avatar_url} alt="Vegeta" class="img-fluid photo-header img">
+                            <div class="col-md-12">
+                                <h1><b>Hi!</b></h1>
+                                <h1><b>My name is ${data.name}!</b></h1>
+                                <h3><b>Currently @ Trilogy Education Services</b></h3>
+                                <div class='links-nav'>
+                                    <i class="fab fa fa-map-marker"></i><a class='nav-link' href="http://maps.google.com/maps?q=+${data.location}" target='_blank'>
+                                        ${data.location}
+                                    </a>
+                                    <i class="fab fa fa-github"></i><a class='nav-link' href=${data.html_url} target='_blank'>
+                                        GitHub
+                                    </a>
+                                    <i class="fab fa fa-blog"></i><a class='nav-link' href=${data.blog} target='_blank'>
+                                        Blog
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     ​
                     <!-- row02 -->
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-3">
-                            <img src="${data.avatar_url}" alt="Vegeta" class="img-fluid">
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-9">
-                            <p> A highly motivated and hardworking individual, who is seeking a challenging role as an
-                                entry-level
-                                full stack web developer with your Company. My education in full stack web development at the
-                                University of Sydney, and self-taught knowledge and experience combined with my interest,
-                                passion
-                                and enjoyment in coding, programming, Cloud Computing and Virtualisation, will enable me to
-                                learn,
-                                contribute and excel in the Web Development Industry. My ability to learn new coding languages
-                                and programs enables me to understand coding concepts quickly which can then be transferred and
-                                utilised in developing user friendly web-based applications using html, css, javaScript,
-                                bootstrap, jQuery, API's and many more coding languages and concepts.
-                            </p>
+                        <div class="bioBrief">
+                            <h4> ${data.bio}
+                            </h4>
                         </div>
                     </div>
-                </section>
+
+                    <!-- row03 -->
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5 card">
+                            <h3><b>Public Repositories</b></h3>
+                            <h3><b>${data.public_repos}</b></h3>
+                        </div>
+                        <div class="col-sm-12 col-md-5 card">
+                            <h3><b>Followers</b></h3>
+                            <h3><b>${data.followers}</b></h3>
+                        </div>
+                    </div>
+
+                    <!-- row04 -->
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5 card">
+                            <h3><b>GitHub Stars</b></h3>
+                            <h3><b>${data.totalStars}</b></h3>
+                        </div>
+                        <div class="col-sm-12 col-md-5 card">
+                            <h3><b>Following</b></h3>
+                            <h3><b>${data.following}</b></h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </body>
-    </html>`;
+    </html>`
     return htmlString;
 }
 
