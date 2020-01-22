@@ -34,4 +34,4 @@ This application was built using:
 - Node.js
 
 ![screenShot](assets/images/profileGenerator01.jpg)
-![videoApp](assets/video/profileGenerator.mp4)
+![videoApp](assets/video/profileGenerator01.gif)
