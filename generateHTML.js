@@ -69,10 +69,11 @@ function generateHTML(data) {
                 font-family: 'Cabin', sans-serif;
                 padding-top: 50px;
                 }
-                main {
+                .main {
                 background-color: #E9EDEE;
                 height: auto;
                 padding-top: 30px;
+                margin-left: -100px !important;
                 }
                 h1, h2, h3, h4, h5, h6 {
                 font-family: 'BioRhyme', serif;
@@ -231,40 +232,42 @@ function generateHTML(data) {
                             </div>
                         </div>
                     </div>
-                    ​
-                    <!-- row02 -->
-                    <div class="row">
-                        <div class="bioBrief">
-                            <h4> ${data.bio}
-                            </h4>
-                        </div>
-                    </div>
 
-                    <!-- row03 -->
-                    <div class="row">
-                        <div class="col-sm-12 col-md-5 card">
-                            <h3><b>Public Repositories</b></h3>
-                            <h3><b>${data.public_repos}</b></h3>
+                    <div class='container main'>
+                        <!-- row02 -->
+                        <div class="row">
+                            <div class="bioBrief">
+                                <h4> ${data.bio}
+                                </h4>
+                            </div>
                         </div>
-                        <div class="col-sm-12 col-md-5 card">
-                            <h3><b>Followers</b></h3>
-                            <h3><b>${data.followers}</b></h3>
-                        </div>
-                    </div>
 
-                    <!-- row04 -->
-                    <div class="row">
-                        <div class="col-sm-12 col-md-5 card">
-                            <h3><b>GitHub Stars</b></h3>
-                            <h3><b>${data.totalStars}</b></h3>
+                        <!-- row03 -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5 card">
+                                <h3><b>Public Repositories</b></h3>
+                                <h3><b>${data.public_repos}</b></h3>
+                            </div>
+                            <div class="col-sm-12 col-md-5 card">
+                                <h3><b>Followers</b></h3>
+                                <h3><b>${data.followers}</b></h3>
+                            </div>
                         </div>
-                        <div class="col-sm-12 col-md-5 card">
-                            <h3><b>Following</b></h3>
-                            <h3><b>${data.following}</b></h3>
+
+                        <!-- row04 -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5 card">
+                                <h3><b>GitHub Stars</b></h3>
+                                <h3><b>${data.totalStars}</b></h3>
+                            </div>
+                            <div class="col-sm-12 col-md-5 card">
+                                <h3><b>Following</b></h3>
+                                <h3><b>${data.following}</b></h3>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>           
         </body>
     </html>`
     return htmlString;
